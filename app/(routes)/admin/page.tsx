@@ -1,4 +1,4 @@
-import { Button } from "@/app/_components/button";
+import Button from '@/app/_components/button'
 
 export default function Admin() {
   return (
@@ -6,5 +6,5 @@ export default function Admin() {
       <h1>admin</h1>
       <Button />
     </main>
-  );
+  )
 }
