@@ -1,10 +1,10 @@
-'use-client';
+'use client';
 
 import * as React from 'react';
-
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
-import { cn } from '@/lib/utils';
 import { Check, ChevronRight, Circle } from 'lucide-react';
+
+import { cn } from '@/lib/utils';
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
 
@@ -23,7 +23,6 @@ const DropdownMenuSubTrigger = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubTrigger> & {
     inset?: boolean;
   }
-  // eslint-disable-next-line react/prop-types
 >(({ className, inset, children, ...props }, ref) => (
   <DropdownMenuPrimitive.SubTrigger
     ref={ref}
@@ -38,7 +37,6 @@ const DropdownMenuSubTrigger = React.forwardRef<
     <ChevronRight className="ml-auto h-4 w-4" />
   </DropdownMenuPrimitive.SubTrigger>
 ));
-
 DropdownMenuSubTrigger.displayName =
   DropdownMenuPrimitive.SubTrigger.displayName;
 
@@ -170,17 +168,17 @@ const DropdownMenuSeparator = React.forwardRef<
 ));
 DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName;
 
-const DropdownMenuShortcut = ({
+function DropdownMenuShortcut({
   className,
   ...props
-}: React.HTMLAttributes<HTMLSpanElement>) => {
+}: React.HTMLAttributes<HTMLSpanElement>) {
   return (
     <span
       className={cn('ml-auto text-xs tracking-widest opacity-60', className)}
       {...props}
     />
   );
-};
+}
 DropdownMenuShortcut.displayName = 'DropdownMenuShortcut';
 
 export {

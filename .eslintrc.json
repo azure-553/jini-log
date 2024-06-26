@@ -15,6 +15,7 @@
     "import/no-extraneous-dependencies": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "react/require-default-props": "off",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off"
   }
 }
