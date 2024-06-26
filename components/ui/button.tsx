@@ -36,7 +36,6 @@ const buttonVariants = cva(
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  // eslint-disable-next-line react/require-default-props
   asChild?: boolean;
 }
 
@@ -47,7 +46,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
-        // eslint-disable-next-line react/jsx-props-no-spreading
         {...props}
       />
     );
