@@ -1,3 +1,5 @@
+// 하이라이트
+
 import React, { useEffect, useRef, useState } from 'react';
 
 export const useHeadingsObserver = (query: string) => {

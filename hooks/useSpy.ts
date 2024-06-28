@@ -1,3 +1,5 @@
+// 반응형
+
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 type ScollDirection = 'UP' | 'DOWN';
