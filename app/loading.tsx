@@ -1,3 +1,5 @@
 import React from 'react';
 
-export const loading = () => <div>loading</div>;
+export default function Loading() {
+  return <div>loading..</div>;
+}
