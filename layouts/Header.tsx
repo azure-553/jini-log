@@ -1,7 +1,8 @@
-'use-client';
+'use client';
+
+import Link from 'next/link';
 
 import { useSpyElem } from '@/hooks/useSpy';
-import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Github } from 'lucide-react';
 import ThemeSwitch from './theme/Switch';

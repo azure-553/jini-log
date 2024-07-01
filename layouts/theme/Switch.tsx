@@ -1,5 +1,6 @@
-'use-client';
+'use client';
 
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -9,7 +10,6 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Dot, LucideIcon, Monitor, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
 
 interface DropdownItemProps {
   t: string;
@@ -27,7 +27,6 @@ export default function ThemeSwitch() {
 
   if (!monted) return null;
 
-  // eslint-disable-next-line react/no-unstable-nested-components
   function Item({ t, Icon, label }: DropdownItemProps) {
     return (
       <DropdownMenuItem onClick={() => setTheme(t)} className="justify-between">
