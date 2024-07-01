@@ -1,55 +1,52 @@
-// 반응형
-
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-type ScollDirection = 'UP' | 'DOWN';
+type ScrollDirection = 'UP' | 'DOWN';
 
-export const useSpyElem = (elemHieght: number) => {
+export const useSpyElem = (elemHeight: number) => {
   const ref = useRef<HTMLDivElement>(null);
   const [marginTop, setMarginTop] = useState(0);
 
   const prevScrollTop = useRef(0);
-  const prevDirection = useRef<ScollDirection>('DOWN');
+  const prevDirection = useRef<ScrollDirection>('DOWN');
 
-  const transitionPoint = useRef(elemHieght);
+  const transitionPoint = useRef(elemHeight);
 
   const onScroll = useCallback(() => {
-    const currentScrollTop =
+    const currScrollTop =
       document?.documentElement?.scrollTop || document?.body?.scrollTop || 0;
-    const nextDirection =
-      prevScrollTop.current > currentScrollTop ? 'UP' : 'DOWN';
+    const nextDirection = prevScrollTop.current > currScrollTop ? 'UP' : 'DOWN';
 
     const isUpTransition =
       prevDirection.current === 'DOWN' && nextDirection === 'UP';
     const isDownTransition =
       prevDirection.current === 'UP' && nextDirection === 'DOWN';
 
-    const NextBottomPoint = currentScrollTop + elemHieght;
+    const NextBottomPoint = currScrollTop + elemHeight;
 
-    if (isUpTransition && transitionPoint.current < currentScrollTop) {
+    if (isUpTransition && transitionPoint.current < currScrollTop) {
       transitionPoint.current = prevScrollTop.current;
     }
 
     if (isDownTransition && NextBottomPoint < transitionPoint.current) {
-      transitionPoint.current = prevScrollTop.current + elemHieght;
+      transitionPoint.current = prevScrollTop.current + elemHeight;
     }
 
     const newMargin = Math.min(
       0,
-      Math.max(-elemHieght, transitionPoint.current - NextBottomPoint),
+      Math.max(-elemHeight, transitionPoint.current - NextBottomPoint),
     );
     setMarginTop(newMargin);
 
     prevDirection.current = nextDirection;
-    prevScrollTop.current = currentScrollTop;
-  }, [elemHieght]);
+    prevScrollTop.current = currScrollTop;
+  }, [elemHeight]);
 
   useEffect(() => {
     const scrollTop =
       document.documentElement?.scrollTop || document.body.scrollTop;
-    transitionPoint.current = scrollTop + elemHieght;
+    transitionPoint.current = scrollTop + elemHeight;
     prevScrollTop.current = scrollTop;
-  }, [elemHieght]);
+  }, [elemHeight]);
 
   useEffect(() => {
     document.addEventListener('scroll', onScroll);

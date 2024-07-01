@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
+
+import { Toaster } from '@/components/ui/toaster';
 import '@/config/globals.css';
-import ThemeProvider from '@/layouts/theme/Provider';
 import { Header } from '@/layouts/Header';
-import RecoilRootWrapper from './RecoilRootWrapper';
+import { Footer } from '@/layouts/Footer';
+import { ThemeProvider } from '@/layouts/theme/Provider';
 
 export const metadata: Metadata = {
   title: 'Jini-log ✨',
@@ -23,10 +25,10 @@ export default function RootLayout({
       <body className="font-pretendard flex min-h-screen flex-col">
         <ThemeProvider>
           <Header />
-          <RecoilRootWrapper>
-            <main className="mt-[64px] flex flex-1 flex-col">{children}</main>
-          </RecoilRootWrapper>
+          <main className="mt-[64px] flex flex-1 flex-col">{children}</main>
+          <Footer />
         </ThemeProvider>
+        <Toaster />
       </body>
     </html>
   );

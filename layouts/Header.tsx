@@ -2,9 +2,9 @@
 
 import Link from 'next/link';
 
-import { useSpyElem } from '@/hooks/useSpy';
 import { Button } from '@/components/ui/button';
 import { Github } from 'lucide-react';
+import { useSpyElem } from '@/hooks/useSpy';
 import ThemeSwitch from './theme/Switch';
 
 export function Header() {
