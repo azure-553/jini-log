@@ -6,11 +6,10 @@ interface PostListProps {
 
 export default function Home() {
   return (
-    <section className="">
+    <section className="mx-auto mt-12 w-full max-w-[950px] px-4">
       <section>
         <ul>
           <div />
-          hello
         </ul>
       </section>
     </section>

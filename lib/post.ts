@@ -1,45 +1,39 @@
-// import fs from 'fs';
-// import path from 'path';
-// import dayjs from 'dayjs';
-// import matter from 'gray-matter';
-// import readingTime from 'reading-time';
+import { Post } from '@/config/type';
+import { sync } from 'glob';
+import path from 'path';
 
-// const BASE_PATH = '@/posts';
-// const POSTS_PATH = path.join(process.cwd(), BASE_PATH);
+const BASE_PATH = '@/posts';
+const POSTS_PATH = path.join(process.cwd(), BASE_PATH);
 
-// // MDX 파일 파싱 : abstract / detail 구분
-// const parsePost = async (postPath: string): Promise<Post> => {
-//   // const postAbstract = parsePostAbstract(postPath);
-//   // const postDetail = await parsePostDetail(postPath);
-//   // return { ...postAbstract, ...postDetail };
-// };
+export const getPostPath = (category?: string) => {
+  const folder = category || '**';
+  const postPaths: string[] = sync(`${POSTS_PATH}/${folder}/**/*.mdx`);
+  return postPaths;
+};
 
-// // MDX Abstract
-// // url, cg path, cg name, slug
-// export const parsePostAbstract = (postPath: string) => {
-//   // category1/title1/content
-//   const filePath = postPath
-//     .slice(postPath.indexOf(BASE_PATH))
-//     .replace(`${BASE_PATH}/`, '')
-//     .replace('.mdx', '');
+export const getCategoryPublicName = (dirPath: string) =>
+  dirPath
+    .split('_')
+    .map((token) => token[0].toUpperCase() + token.slice(1, token.length))
+    .join(' ');
 
-//   // category1, title1
-//   const [category, slug] = filePath.split('/');
+const parsePostAbstract = (postPath: string) => {
+  const filePath = postPath
+    .slice(postPath.indexOf(BASE_PATH))
+    .replace(`${BASE_PATH}`, '')
+    .replace('.mdx', '');
+  const [categoryPath, slug] = filePath.split('/');
+  const url = `/blog/${categoryPath}/${slug}`;
+  const categoryPublicName = getCategoryPublicName(categoryPath);
+  return { url, categoryPath, categoryPublicName, slug };
+};
 
-//   // /blog/category1/title1
-//   // const url = `/blog/${categoryPath}/${slug}`;
+const parsePost = (postPath: string): Promise<Post> => {
+  const postAbstract = parsePostAbstract(postPath);
+  const postDetail = parsePostDetail();
 
-//   return { url, category, slug };
-// };
-
-// // MDX Detail
-// const parsePostDetail = async (postPath: string) => {
-//   const file = fs.readFileSync(postPath, 'utf8');
-//   const { data, content } = matter(file);
-//   const grayMatter = data as PostMatter;
-//   const readingMinutes = Math.ceil(readingTime(content).minutes);
-//   const dateString = dayjs(grayMatter.date)
-//     .locale('ko')
-//     .format('YYYY년 MM월 DD일');
-//   return { ...grayMatter, dateString, content, readingMinutes };
-// };
+  return {
+    ...postAbstract,
+    ...postDetail,
+  };
+};
