@@ -28,6 +28,10 @@ const parsePostAbstract = (postPath: string) => {
   return { url, categoryPath, categoryPublicName, slug };
 };
 
+const parsePostDetail = () => {
+
+};
+
 const parsePost = (postPath: string): Promise<Post> => {
   const postAbstract = parsePostAbstract(postPath);
   const postDetail = parsePostDetail();
