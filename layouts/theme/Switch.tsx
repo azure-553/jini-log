@@ -1,12 +1,13 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
-  DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Dot, LucideIcon, Monitor, Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
@@ -17,22 +18,24 @@ interface DropdownItemProps {
   Icon: LucideIcon;
 }
 
-export default function ThemeSwitch() {
-  const [monted, setMounted] = useState(false);
+function ThemeSwitch() {
+  const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
+  // useEffect only runs on the client, so now we can safely show the UI
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  if (!monted) return null;
+  if (!mounted) {
+    return null;
+  }
 
   function Item({ t, Icon, label }: DropdownItemProps) {
     return (
       <DropdownMenuItem onClick={() => setTheme(t)} className="justify-between">
         <div className="flex items-center gap-2">
-          <Icon width={14} />
-          {label}
+          <Icon width={14} /> {label}
         </div>
         {theme === t && <Dot />}
       </DropdownMenuItem>
@@ -56,3 +59,5 @@ export default function ThemeSwitch() {
     </DropdownMenu>
   );
 }
+
+export default ThemeSwitch;

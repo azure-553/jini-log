@@ -18,9 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="ko"
+      lang="en"
       className="h-full scroll-my-20 scroll-smooth"
-      suppressContentEditableWarning
+      suppressHydrationWarning
     >
       <body className="font-pretendard flex min-h-screen flex-col">
         <ThemeProvider>
