@@ -1,7 +1,6 @@
+import './globals.css';
 import type { Metadata } from 'next';
 
-import { Toaster } from '@/components/ui/toaster';
-import '@/config/globals.css';
 import { Header } from '@/layouts/Header';
 import { Footer } from '@/layouts/Footer';
 import { ThemeProvider } from '@/layouts/theme/Provider';
@@ -28,7 +27,6 @@ export default function RootLayout({
           <main className="mt-[64px] flex flex-1 flex-col">{children}</main>
           <Footer />
         </ThemeProvider>
-        <Toaster />
       </body>
     </html>
   );
