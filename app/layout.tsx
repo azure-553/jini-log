@@ -6,7 +6,7 @@ import { Footer } from '@/layouts/Footer';
 import { ThemeProvider } from '@/layouts/theme/Provider';
 
 export const metadata: Metadata = {
-  title: 'Jini-log ✨',
+  title: '지니의 기술블로그, Jini-log ✨',
   description: '끊임없는 성장을 추구합니다.',
 };
 
