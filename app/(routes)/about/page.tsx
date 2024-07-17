@@ -1,10 +1,11 @@
-import Button from '@/app/_components/button'
+'use client';
+
+import React from 'react';
 
 export default function Admin() {
   return (
     <main>
       <h1>admin</h1>
-      <Button />
     </main>
-  )
+  );
 }
