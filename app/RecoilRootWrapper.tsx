@@ -1,5 +1,3 @@
-'use client'
-
 import { RecoilRoot } from 'recoil'
 import React from 'react'
 
