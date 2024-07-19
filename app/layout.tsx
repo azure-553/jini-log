@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   description: '끊임없는 성장을 추구합니다.',
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{

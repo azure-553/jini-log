@@ -1,9 +1,9 @@
 'use client';
 
-export default function Admin() {
+export default function About() {
   return (
     <main>
-      <h1>admin</h1>
+      <h1>about</h1>
     </main>
   );
 }
