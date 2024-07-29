@@ -14,8 +14,6 @@ async function PostListPage({ category }: PostListProps) {
   const categoryList = await getCategoryDetailList();
   const allPostCount = await getAllPostCount();
 
-  console.log(postList.map((data) => data));
-
   return (
     <section className="mx-auto mt-12 w-full max-w-[950px] px-4">
       <CategoryList

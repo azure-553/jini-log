@@ -7,7 +7,7 @@ import { sync } from 'glob';
 import path from 'path';
 import { CategoryDetail, HeadingItem, Post, PostMatter } from '@/config/type';
 
-const BASE_PATH = '@/posts';
+const BASE_PATH = '/posts';
 const POSTS_PATH = path.join(process.cwd(), BASE_PATH);
 
 export const getPostPaths = (category?: string) => {
