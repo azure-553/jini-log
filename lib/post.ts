@@ -128,7 +128,8 @@ export const parseToc = (content: string): HeadingItem[] => {
       link: `#${heading
         .replace('# ', '')
         .replace('#', '')
-        .replace(/[\\[\]:!@#$/%^&*()+=,.]/g, '')
+        // eslint-disable-next-line no-useless-escape
+        .replace(/[\[\]:!@#$/%^&*()+=,.]/g, '')
         .replace(/ /g, '-')
         .toLowerCase()
         .replace('?', '')}`,
