@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Github } from 'lucide-react';
 import { useSpyElem } from '@/hooks/useSpy';
+import ScrollProgressBar from '@/components/common/ScrollProgressbar';
 import ThemeSwitch from './theme/Switch';
 
 export function Header() {
@@ -29,6 +30,7 @@ export function Header() {
           </Button>
         </div>
       </div>
+      <ScrollProgressBar />
     </nav>
   );
 }
